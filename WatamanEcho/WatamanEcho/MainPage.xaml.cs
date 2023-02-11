@@ -61,7 +61,6 @@ namespace WatamanEcho
             //txtInfoX.Visibility = Visibility.Collapsed;
      
 
-
             brdr.Background = new ImageBrush
             {
                 ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/Images/H1.gif")),
