@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="WatamanEcho.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WatamanEcho"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" >
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="222" />
+            <Setter Property="Foreground" Value="DarkGray" />
+        </Style>
+    </Page.Resources>
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>-->
+        <StackPanel  ></StackPanel>
+        <MediaElement x:Name="mediaElement" />
+        <StackPanel x:Name="clockPanel" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="hourHand" Text="10" FontFamily="Assets/Fonts/digital-7.ttf#Digital-7"  ></TextBlock>
+            </StackPanel>
+            <TextBlock Text=":" FontFamily="Assets/Fonts/digital-7.ttf#Digital-7"  ></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="minuteHand" Text="10"  FontFamily="Assets/Fonts/digital-7.ttf#Digital-7"  ></TextBlock>
+            </StackPanel>
+            <TextBlock Text=":" FontFamily="Assets/Fonts/digital-7.ttf#Digital-7"  ></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="secondHand" Text="10" FontFamily="Assets/Fonts/digital-7.ttf#Digital-7"  ></TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel   Grid.Row="2"></StackPanel>
+
+    </Grid>
+</Page>
