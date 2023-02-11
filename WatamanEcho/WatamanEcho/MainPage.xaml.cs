@@ -59,8 +59,7 @@ namespace WatamanEcho
             timer.Tick += Timer_Tick;
             timer.Start();
             //txtInfoX.Visibility = Visibility.Collapsed;
-            //txtInfoY.Visibility = Visibility.Collapsed;
-            //txtInterval.Visibility = Visibility.Collapsed;
+     
 
             brdr.Background = new ImageBrush
             {
