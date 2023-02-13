@@ -55,7 +55,7 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock x:Name="lblTemp" Text="27" FontSize="55"  HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="Assets/Fonts/digital-7.ttf#Digital-7"  />
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="&#176;C" FontSize="27" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Assets/Fonts/digital-7.ttf#Digital-7" Margin="0,3,0,0"  />
+                                <TextBlock x:Name="lblCelcius" Text="&#176;C" FontSize="27" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Assets/Fonts/digital-7.ttf#Digital-7" Margin="0,3,0,0"  />
                              </StackPanel>
                         </StackPanel>
                     </StackPanel>

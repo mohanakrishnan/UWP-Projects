@@ -107,6 +107,10 @@ namespace WatamanEcho
                         hourHand.Foreground = GetSolidColorBrush(WEConstants.White);
                         minuteHand.Foreground = GetSolidColorBrush(WEConstants.White);
                         secondHand.Foreground = GetSolidColorBrush(WEConstants.White);
+                        lblDay.Foreground = GetSolidColorBrush(WEConstants.Black);
+                        lblTemp.Foreground = GetSolidColorBrush(WEConstants.White);
+                        lblCelcius.Foreground = GetSolidColorBrush(WEConstants.White);
+
                     }
                     else
                     {
@@ -115,6 +119,10 @@ namespace WatamanEcho
                         hourHand.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
                         minuteHand.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
                         secondHand.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
+                        lblDay.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
+                        lblTemp.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
+                        lblCelcius.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
+
                     }
                 }
             }
