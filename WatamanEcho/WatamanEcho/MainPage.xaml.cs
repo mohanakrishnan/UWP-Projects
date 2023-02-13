@@ -44,10 +44,11 @@ namespace WatamanEcho
         int m_iDate = 0;
 
         bool m_bCharging = false;
-
+        bool m_bDay = true;
         String m_sPeriod = WEConstants.AM;
 
         int imgCounter = 1;
+
 
         public MainPage()
         {
@@ -59,7 +60,7 @@ namespace WatamanEcho
             timer.Tick += Timer_Tick;
             timer.Start();
             //txtInfoX.Visibility = Visibility.Collapsed;
-     
+
 
             brdr.Background = new ImageBrush
             {
@@ -72,6 +73,110 @@ namespace WatamanEcho
             DateTime dd = DateTime.Now;
             m_iSecond = dd.Second;
             m_iMinute = dd.Minute;
+            changeSecond();
+
+            if (m_iMinute != tempMinute)
+            {
+                tempMinute = m_iMinute;
+                m_iHour = dd.Hour;
+                changeMinute();
+
+                if (m_iHour != tempHour)
+                {
+                    tempHour = m_iHour;
+                    m_iDate = dd.Day;
+                    if (tempHour > 5 && tempHour < 23)
+                    {
+                        m_bDay = true;
+                    }
+                    else
+                    {
+                        m_bDay = false;
+                    }
+
+                    changeHour();
+                    if (m_iDate != tempDate)
+                    {
+                        tempDate = m_iDate;
+                        lblDay.Text = dd.DayOfWeek.ToString() + ", " + dd.ToString("MMMM") + " " + tempDate.ToString(WEConstants.DATE_FORMAT);
+                    }
+                    if (m_bDay)
+                    {
+                        brdr.Opacity = 60;
+
+                        hourHand.Foreground = GetSolidColorBrush(WEConstants.White);
+                        minuteHand.Foreground = GetSolidColorBrush(WEConstants.White);
+                        secondHand.Foreground = GetSolidColorBrush(WEConstants.White);
+                    }
+                    else
+                    {
+                        grdGrid.Background = GetSolidColorBrush(WEConstants.Black);
+                        brdr.Opacity = 100;
+                        hourHand.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
+                        minuteHand.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
+                        secondHand.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
+                    }
+                }
+            }
+        }
+
+        private void sayTime()
+        {
+            String l_sSayTime = "The time is ";
+            if (m_iHour == 0)
+            {
+                l_sSayTime += ": 12";
+            }
+            else
+            {
+                l_sSayTime += ":" + m_iHour12.ToString();
+            }
+
+            if (m_iMinute != 0)
+            {
+                l_sSayTime += ":" + m_iMinute.ToString();
+            }
+            l_sSayTime += ":" + m_sPeriod;
+            speak(l_sSayTime);
+        }
+
+        private void changeMinute()
+        {
+            if (m_bDay)
+            {
+                changeImage();
+            }
+            if (m_bDay && m_iMinute % m_iInterval == 0)
+            {
+                sayTime();
+            }
+            minuteHand.Text = m_iMinute.ToString(WEConstants.TIME_FORMAT);
+        }
+
+        private void changeHour()
+        {
+            if (m_iHour >= 12)
+            {
+                m_sPeriod = WEConstants.PM;
+            }
+            else
+            {
+                m_sPeriod = WEConstants.AM;
+            }
+
+            if (m_iHour > 12)
+            {
+                m_iHour12 = m_iHour - 12;
+            }
+            else
+            {
+                m_iHour12 = m_iHour;
+            }
+            hourHand.Text = m_iHour12.ToString(WEConstants.TIME_FORMAT);
+        }
+
+        private void changeSecond()
+        {
             if (m_iSecond % 2 == 0)
             {
                 secondHand.Opacity = 0;
@@ -86,74 +191,6 @@ namespace WatamanEcho
                 if (m_bCharging)
                 {
                     lblBattery.Opacity = 0;
-                }
-            }
-
-            if (m_iMinute != tempMinute)
-            {
-                minuteHand.Text = m_iMinute.ToString(WEConstants.TIME_FORMAT);
-                tempMinute = m_iMinute;
-                m_iHour = dd.Hour;
-              
-                if (m_iHour != tempHour)
-                {
-
-                    tempHour = m_iHour;
-
-                    if (m_iHour >= 12)
-                    {
-                        m_sPeriod = WEConstants.PM;
-                    }
-                    else
-                    {
-                        m_sPeriod = WEConstants.AM;
-                    }
-                    
-                    if (m_iHour > 12)
-                    {
-                        m_iHour12 = m_iHour - 12;
-                    }
-                    else
-                    {
-                        m_iHour12 = m_iHour;
-                    }
-                    hourHand.Text = m_iHour12.ToString(WEConstants.TIME_FORMAT);
-
-                    m_iDate = dd.Day;
-                    if (m_iDate != tempDate)
-                    {
-                        tempDate = m_iDate;
-                        lblDay.Text = dd.DayOfWeek.ToString() + ", " + dd.ToString("MMMM") + " " + tempDate.ToString(WEConstants.DATE_FORMAT);
-                        String l_sYear = dd.Year.ToString();
-                    }
-                }
-                if (tempHour > 5 && tempHour < 23)
-                {
-                    changeImage();
-                }
-                else
-                {
-                    grdGrid.Background = GetSolidColorBrush("#000000");
-                }
-
-                if (m_iMinute % m_iInterval == 0 && tempHour > 5 && tempHour < 23)
-                {
-                    String l_sSayTime = "The time is ";
-                    if (m_iHour == 0)
-                    {
-                        l_sSayTime += ": 12";
-                    }
-                    else
-                    {
-                        l_sSayTime += ":" + m_iHour12.ToString();
-                    }
-
-                    if (m_iMinute != 0)
-                    {
-                        l_sSayTime += ":" + m_iMinute.ToString();
-                    }
-                    l_sSayTime += ":" + m_sPeriod;
-                    speak(l_sSayTime);
                 }
             }
         }
@@ -173,8 +210,11 @@ namespace WatamanEcho
             //brush.Stretch = Stretch.UniformToFill;
             //grdGrid.Background = brush;
 
-            grdGrid.Background = new ImageBrush { ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/Images/M" + imgCounter + ".jpg")),
-                Stretch = Stretch.UniformToFill };
+            grdGrid.Background = new ImageBrush
+            {
+                ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/Images/M" + imgCounter + ".jpg")),
+                Stretch = Stretch.UniformToFill
+            };
 
         }
 
@@ -199,63 +239,68 @@ namespace WatamanEcho
                 var details = sender.GetReport();
                 double getPercentage = (details.RemainingCapacityInMilliwattHours.Value / (double)details.FullChargeCapacityInMilliwattHours.Value);
                 var getStatus = details.Status;
-              
-                int l_dPercentage = (int)(getPercentage * 100);
-             //   txtPanel4_1.Text = l_dPercentage.ToString();
-                if (l_dPercentage < 10)
+                if (m_bDay)
                 {
-                    lblBattery.Foreground = GetSolidColorBrush("#AA0000");
-                }
-                else if (l_dPercentage < 20)
+                    int l_dPercentage = (int)(getPercentage * 100);
+                    //   txtPanel4_1.Text = l_dPercentage.ToString();
+                    if (l_dPercentage < 10)
+                    {
+                        lblBattery.Foreground = GetSolidColorBrush("#AA0000");
+                    }
+                    else if (l_dPercentage < 20)
+                    {
+                        lblBattery.Foreground = GetSolidColorBrush("#FF0000");
+                    }
+                    else if (l_dPercentage < 30)
+                    {
+                        lblBattery.Foreground = GetSolidColorBrush("#FF4400");
+                    }
+                    else if (l_dPercentage < 40)
+                    {
+                        lblBattery.Foreground = GetSolidColorBrush("#FF8800");
+                    }
+                    else if (l_dPercentage < 50)
+                    {
+                        lblBattery.Foreground = GetSolidColorBrush("#FFCC00");
+                    }
+                    else if (l_dPercentage < 60)
+                    {
+                        lblBattery.Foreground = GetSolidColorBrush("#FFFF00");
+                    }
+                    else if (l_dPercentage < 70)
+                    {
+                        lblBattery.Foreground = GetSolidColorBrush("#CCFF00");
+                    }
+                    else if (l_dPercentage < 80)
+                    {
+                        lblBattery.Foreground = GetSolidColorBrush("#88FF00");
+                    }
+                    else if (l_dPercentage < 90)
+                    {
+                        lblBattery.Foreground = GetSolidColorBrush("#44FF00");
+                    }
+                    else if (l_dPercentage < 100)
+                    {
+                        lblBattery.Foreground = GetSolidColorBrush("#00CC00");
+                    }
+                    else
+                    {
+                        lblBattery.Foreground = GetSolidColorBrush("#00AA00");
+                    }
+                }else
                 {
-                    lblBattery.Foreground = GetSolidColorBrush("#FF0000");
+                    lblBattery.Foreground = GetSolidColorBrush(WEConstants.White);
                 }
-                else if (l_dPercentage < 30)
-                {
-                    lblBattery.Foreground = GetSolidColorBrush("#FF4400");
-                }
-                else if (l_dPercentage < 40)
-                {
-                    lblBattery.Foreground = GetSolidColorBrush("#FF8800");
-                }
-                else if(l_dPercentage < 50)
-                {
-                    lblBattery.Foreground = GetSolidColorBrush("#FFCC00");
-                }
-                else if (l_dPercentage < 60)
-                {
-                    lblBattery.Foreground = GetSolidColorBrush("#FFFF00");
-                }
-                else if (l_dPercentage < 70)
-                {
-                    lblBattery.Foreground = GetSolidColorBrush("#CCFF00");
-                }
-                else if (l_dPercentage < 80)
-                {
-                    lblBattery.Foreground = GetSolidColorBrush("#88FF00");
-                }
-                else if (l_dPercentage < 90)
-                {
-                    lblBattery.Foreground = GetSolidColorBrush("#44FF00");
-                }
-                else if (l_dPercentage < 100)
-                {
-                    lblBattery.Foreground = GetSolidColorBrush("#00CC00");
-                }
-                else
-                {
-                    lblBattery.Foreground = GetSolidColorBrush("#00AA00");
-                }
-
                 if (getStatus.ToString().Equals("Charging"))
                 {
                     m_bCharging = true;
-                }else
+                }
+                else
                 {
                     m_bCharging = false;
                     lblBattery.Opacity = 100;
                 }
-               
+
                 lblBattery.Text = getPercentage.ToString("##%");
             });
         }
@@ -272,7 +317,7 @@ namespace WatamanEcho
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
             Application.Current.Exit();
         }
     }

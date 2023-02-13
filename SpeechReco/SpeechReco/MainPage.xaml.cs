@@ -28,29 +28,36 @@ namespace SpeechReco
         public MainPage()
         {
             this.InitializeComponent();
-           
+            if (true)
+            {
+                this.recognizer = new SpeechRecognizer();
+            }
+            speak();
         }
         SpeechRecognizer recognizer;
         private async void button_Click(object sender, RoutedEventArgs e)
         {
             bool permissionGained = await AudioCapturePermissions.RequestMicrophonePermission();
-            if (permissionGained)
-            {
-                this.recognizer = new SpeechRecognizer();
-            }
+          
+
+        }
+
+        private async void speak()
+        {
+           
             try
             {
-               
+
                 await this.recognizer.CompileConstraintsAsync();
 
-                this.recognizer.Timeouts.InitialSilenceTimeout = TimeSpan.FromSeconds(5);
+             //   this.recognizer.Timeouts.InitialSilenceTimeout = TimeSpan.FromSeconds(5);
                 this.recognizer.Timeouts.EndSilenceTimeout = TimeSpan.FromSeconds(20);
 
                 this.recognizer.UIOptions.AudiblePrompt = "Say whatever you like, I'm listening";
                 this.recognizer.UIOptions.ExampleText = "The quick brown fox jumps over the lazy dog";
                 this.recognizer.UIOptions.ShowConfirmation = true;
                 this.recognizer.UIOptions.IsReadBackEnabled = true;
-                this.recognizer.Timeouts.BabbleTimeout = TimeSpan.FromSeconds(5);
+             //   this.recognizer.Timeouts.BabbleTimeout = TimeSpan.FromSeconds(5);
 
                 var result = await this.recognizer.RecognizeWithUIAsync();
 
@@ -81,14 +88,11 @@ namespace SpeechReco
             }
             catch (Exception exception)
             {
-                 
-                    var messageDialog = new Windows.UI.Popups.MessageDialog(exception.StackTrace, "Exception");
-                    await messageDialog.ShowAsync();
-                
+
+                var messageDialog = new Windows.UI.Popups.MessageDialog(exception.StackTrace, "Exception");
+                await messageDialog.ShowAsync();
+
             }
-
-  
-
         }
     }
 }

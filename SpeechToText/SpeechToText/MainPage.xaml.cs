@@ -94,7 +94,7 @@ namespace SpeechToText
             }
             else
             {
-                resultTextBlock.Visibility = Visibility.Visible;
+             //   resultTextBlock.Visibility = Visibility.Visible;
                 resultTextBlock.Text = "Permission to access capture resources was not given by the user; please set the application setting in Settings->Privacy->Microphone.";
 
                 btnRecognizeWithUI.IsEnabled = false;

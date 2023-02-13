@@ -47,7 +47,7 @@
                     </Button>
                     <TextBlock FontSize="33"  RelativePanel.AlignHorizontalCenterWithPanel="True" >WaTaMaN</TextBlock>
                     <Border RelativePanel.AlignRightWithPanel="True"  Margin="0.182,0,0.182,0.364" Height="36" VerticalAlignment="Bottom">
-                        <TextBlock FontSize="27" x:Name="lblBattery"  >00%</TextBlock>
+                        <TextBlock FontSize="27" x:Name="lblBattery"  Padding="10 0 0 0">00%</TextBlock>
                     </Border>
                 </RelativePanel>
                 <RelativePanel x:Name="panelInformation"  Grid.Row="1" >
