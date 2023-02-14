@@ -79,7 +79,6 @@ namespace WatamanEcho
             {
                 tempMinute = m_iMinute;
                 m_iHour = dd.Hour;
-                changeMinute();
 
                 if (m_iHour != tempHour)
                 {
@@ -107,7 +106,7 @@ namespace WatamanEcho
                         hourHand.Foreground = GetSolidColorBrush(WEConstants.White);
                         minuteHand.Foreground = GetSolidColorBrush(WEConstants.White);
                         secondHand.Foreground = GetSolidColorBrush(WEConstants.White);
-                        lblDay.Foreground = GetSolidColorBrush(WEConstants.Black);
+                        lblDay.Foreground = GetSolidColorBrush(WEConstants.White);
                         lblTemp.Foreground = GetSolidColorBrush(WEConstants.White);
                         lblCelcius.Foreground = GetSolidColorBrush(WEConstants.White);
 
@@ -125,6 +124,7 @@ namespace WatamanEcho
 
                     }
                 }
+                changeMinute();
             }
         }
 
