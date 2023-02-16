@@ -11,8 +11,8 @@ namespace WatamanEcho
         public static String TIME_FORMAT = "00";
         public static String DATE_FORMAT = "00";
         public static String DAY_FORMAT = "ddd";
-        public static String AM = "A:M";
-        public static String PM = "P:M";
+        public static String AM = "AM";
+        public static String PM = "PM";
         public static String DarkGrey = "#555555";
         public static String White = "#FFFFFF";
         public static String Black = "#000000";

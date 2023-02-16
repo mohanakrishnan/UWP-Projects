@@ -115,8 +115,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\H1.gif" />
+    <Content Include="Assets\Images\H2.gif" />
     <Content Include="Assets\Images\M1.jpg" />
     <Content Include="Assets\Images\M2.jpg" />
+    <Content Include="Assets\Images\M3.jpg" />
+    <Content Include="Assets\Images\M4.jpg" />
+    <Content Include="Assets\Images\M5.jpg" />
+    <Content Include="Assets\Images\M6.jpg" />
+    <Content Include="Assets\Images\M7.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

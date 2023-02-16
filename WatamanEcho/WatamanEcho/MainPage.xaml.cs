@@ -48,7 +48,9 @@ namespace WatamanEcho
         String m_sPeriod = WEConstants.AM;
 
         int imgCounter = 1;
-
+        int gifCounter = 1;
+        private SolidColorBrush colorDarkgrey;
+        private SolidColorBrush colorWhite;
 
         public MainPage()
         {
@@ -60,13 +62,10 @@ namespace WatamanEcho
             timer.Tick += Timer_Tick;
             timer.Start();
             //txtInfoX.Visibility = Visibility.Collapsed;
+                        
+            colorWhite = GetSolidColorBrush(WEConstants.White);
+            colorDarkgrey = GetSolidColorBrush(WEConstants.DarkGrey);
 
-
-            brdr.Background = new ImageBrush
-            {
-                ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/Images/H1.gif")),
-                Stretch = Stretch.UniformToFill
-            };
         }
         private void Timer_Tick(object sender, object e)
         {
@@ -103,24 +102,27 @@ namespace WatamanEcho
                     {
                         brdr.Opacity = 60;
 
-                        hourHand.Foreground = GetSolidColorBrush(WEConstants.White);
-                        minuteHand.Foreground = GetSolidColorBrush(WEConstants.White);
-                        secondHand.Foreground = GetSolidColorBrush(WEConstants.White);
-                        lblDay.Foreground = GetSolidColorBrush(WEConstants.White);
-                        lblTemp.Foreground = GetSolidColorBrush(WEConstants.White);
-                        lblCelcius.Foreground = GetSolidColorBrush(WEConstants.White);
-
+                        hourHand.Foreground = colorWhite;
+                        minuteHand.Foreground = colorWhite;
+                        secondHand.Foreground = colorWhite;
+                        lblDay.Foreground = colorWhite;
+                        lblTemp.Foreground = colorWhite;
+                        lblCelcius.Foreground = colorWhite;
+                        lblTitle.Foreground = colorWhite;
+                        HamburgerButton.Foreground = colorWhite;
                     }
                     else
                     {
                         grdGrid.Background = GetSolidColorBrush(WEConstants.Black);
                         brdr.Opacity = 100;
-                        hourHand.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
-                        minuteHand.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
-                        secondHand.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
-                        lblDay.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
-                        lblTemp.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
-                        lblCelcius.Foreground = GetSolidColorBrush(WEConstants.DarkGrey);
+                        hourHand.Foreground = colorDarkgrey;
+                        minuteHand.Foreground = colorDarkgrey;
+                        secondHand.Foreground = colorDarkgrey;
+                        lblDay.Foreground = colorDarkgrey;
+                        lblTemp.Foreground = colorDarkgrey;
+                        lblCelcius.Foreground = colorDarkgrey;
+                        lblTitle.Foreground = colorDarkgrey;
+                        HamburgerButton.Foreground = colorDarkgrey;
 
                     }
                 }
@@ -152,6 +154,7 @@ namespace WatamanEcho
         {
             if (m_bDay)
             {
+              //  changeGif();
                 changeImage();
             }
             if (m_bDay && m_iMinute % m_iInterval == 0)
@@ -203,9 +206,26 @@ namespace WatamanEcho
             }
         }
 
+        private void changeGif()
+        {
+            if (gifCounter < 2)
+            {
+                gifCounter++;
+            }
+            else
+            {
+                gifCounter = 1;
+            }
+
+            grdGrid.Background = new ImageBrush
+            {
+                ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/Images/H" + gifCounter + ".gif")),
+                Stretch = Stretch.UniformToFill
+            };
+        }
         private void changeImage()
         {
-            if (imgCounter < 2)
+            if (imgCounter < 7)
             {
                 imgCounter++;
             }
@@ -218,12 +238,11 @@ namespace WatamanEcho
             //brush.Stretch = Stretch.UniformToFill;
             //grdGrid.Background = brush;
 
-            grdGrid.Background = new ImageBrush
+            brdr.Background = new ImageBrush
             {
                 ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/Images/M" + imgCounter + ".jpg")),
-                Stretch = Stretch.UniformToFill
+                Stretch = Stretch.UniformToFill, Opacity = 60
             };
-
         }
 
         private async void speak(String p_sText)
@@ -297,7 +316,7 @@ namespace WatamanEcho
                     }
                 }else
                 {
-                    lblBattery.Foreground = GetSolidColorBrush(WEConstants.White);
+                    lblBattery.Foreground = colorWhite;
                 }
                 if (getStatus.ToString().Equals("Charging"))
                 {

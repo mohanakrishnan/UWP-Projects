@@ -9,10 +9,10 @@
     <Page.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="125" />
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="Honeydew" />
         </Style>
         <Style TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="DarkGray" />
         </Style>
     </Page.Resources>
     <Page.BorderBrush>
@@ -25,9 +25,9 @@
     <Border Name="brdr" Background="Black" Opacity="0.6" >
         <RelativePanel >
             <Grid x:Name ="grdGrid" RelativePanel.AlignLeftWithPanel="True" >
-                <Grid.Background>
+                <!--<Grid.Background>
                     <ImageBrush ImageSource="Assets/Images/M1.jpg" Opacity="100" Stretch="UniformToFill" />
-                </Grid.Background>
+                </Grid.Background>-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="43.2" />
                     <RowDefinition Height="129.6" />
@@ -39,13 +39,13 @@
                 </Grid.ColumnDefinitions>
                 <MediaElement x:Name="mediaElement" />
 
-                <RelativePanel Grid.Row="0" x:Name="panelHeader" Background="Black" Opacity="0.8">
+                <RelativePanel Grid.Row="0" x:Name="panelHeader" Background="Black" Opacity="0.6">
                     <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Foreground="White"  Content="&#xE700;" FontSize="27" RelativePanel.AlignLeftWithPanel="True" Click="HamburgerButton_Click" >
                         <Button.Background>
                             <SolidColorBrush Opacity="0"/>
                         </Button.Background>
                     </Button>
-                    <TextBlock FontSize="33"  RelativePanel.AlignHorizontalCenterWithPanel="True" >WaTaMaN</TextBlock>
+                    <TextBlock FontSize="33" x:Name="lblTitle" RelativePanel.AlignHorizontalCenterWithPanel="True" >WaTaMaN</TextBlock>
                     <Border RelativePanel.AlignRightWithPanel="True"  Margin="0.182,0,0.182,0.364" Height="36" VerticalAlignment="Bottom">
                         <TextBlock FontSize="27" x:Name="lblBattery"  Padding="10 0 0 0">00%</TextBlock>
                     </Border>
@@ -71,7 +71,7 @@
                             <TextBlock x:Name="minuteHand" Text="00"  FontFamily="Assets/Fonts/Gobold Uplow.ttf"  />
                         </StackPanel>
                     
-                    <TextBlock x:Name="lblDay" Text="Sunday, January 1" FontSize="25"  HorizontalAlignment="Center" VerticalAlignment="Top" Padding="0,0,0,9" Margin="0"  />
+                    <TextBlock x:Name="lblDay" Text="Sunday, January 1" FontSize="30"  HorizontalAlignment="Center" VerticalAlignment="Top" Padding="13,0,0,9"  />
                 </StackPanel>
 
                 
