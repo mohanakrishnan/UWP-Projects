@@ -13,9 +13,11 @@ namespace WatamanEcho
         public static String DAY_FORMAT = "ddd";
         public static String AM = "AM";
         public static String PM = "PM";
-        public static String DarkGrey = "#555555";
-        public static String White = "#FFFFFF";
-        public static String Black = "#000000";
+        public static String DarkGrey = "#FF555555";
+        public static String White = "#FFF8F8FF";
+        public static String Orange = "#FFFFA500";
+        public static String Black = "#FF000000";
+        public static String Transparent = "#00FFFFFF";
 
     }
 }

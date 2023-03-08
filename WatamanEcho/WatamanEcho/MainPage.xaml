@@ -53,9 +53,9 @@
                 <RelativePanel x:Name="panelInformation"  Grid.Row="1" >
                     <StackPanel x:Name="panelTemperature" Orientation="Vertical" RelativePanel.AlignLeftWithPanel="True" BorderBrush="White"  Margin="12,20,5,0">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock x:Name="lblTemp" Text="27" FontSize="55"  HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="Assets/Fonts/digital-7.ttf#Digital-7"  />
+                            <TextBlock x:Name="lblTemp" Text="27" FontSize="55"  HorizontalAlignment="Center" VerticalAlignment="Bottom"   />
                             <StackPanel Orientation="Vertical">
-                                <TextBlock x:Name="lblCelcius" Text="&#176;C" FontSize="27" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Assets/Fonts/digital-7.ttf#Digital-7" Margin="0,3,0,0"  />
+                                <TextBlock x:Name="lblCelcius" Text="&#176;C" FontSize="27" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,9,0,0"  />
                              </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -70,11 +70,14 @@
                         <TextBlock x:Name="secondHand" FontSize="88" Text=":" FontFamily="Assets/Fonts/Gobold Uplow.ttf" Margin="0,18,0,0"  />
                             <TextBlock x:Name="minuteHand" Text="00"  FontFamily="Assets/Fonts/Gobold Uplow.ttf"  />
                         </StackPanel>
-                    
+
                     <TextBlock x:Name="lblDay" Text="Sunday, January 1" FontSize="30"  HorizontalAlignment="Center" VerticalAlignment="Top" Padding="13,0,0,9"  />
+                    <TextBlock x:Name="lblResult" Text="Sample" FontSize="30"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="13,0,0,9"  />
+
                 </StackPanel>
 
-                
+
+
             </Grid>
         </RelativePanel>
     </Border>

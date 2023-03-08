@@ -95,12 +95,17 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <Content Include="Assets\Fonts\digital-7.ttf" />
     <Content Include="Assets\Fonts\Gobold Uplow.otf" />
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AudioCapturePermissions.cs" />
+    <Compile Include="OpenWeatherMap.cs" />
     <Compile Include="WEConstants.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -108,9 +113,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AppxManifest Include="Package.appxmanifest">
-      <SubType>Designer</SubType>
-    </AppxManifest>
     <None Include="WatamanEcho_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +125,9 @@
     <Content Include="Assets\Images\M5.jpg" />
     <Content Include="Assets\Images\M6.jpg" />
     <Content Include="Assets\Images\M7.jpg" />
+    <Content Include="Assets\logow.png" />
+    <Content Include="Assets\logow.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
